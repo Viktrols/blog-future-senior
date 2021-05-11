@@ -1,0 +1,67 @@
+<header id="header">
+{% load static %}
+
+  <h1><a href={% url 'index' %}>Future Senior</a></h1>
+  <nav class="links">
+  <ul>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'profile' user.username%}">Пользователь: {{ user.username }}</li>
+    <li><a href="{% url 'new_post' %}">Новая запись</a></li>
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Войти</a></li>
+    <li><a href="{% url 'signup' %}">Регистрация</a></li>
+    {% endif %}
+  </ul>
+  </nav>
+  <nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="{% url 'search_results' %}">
+										<input type="text" name="q" placeholder="Search" />
+									</form>
+
+								</li>
+                <li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+                
+							</ul>
+						</nav>
+</header>
+<section id="menu">
+							<section>
+								<form class="search" method="get" action="{% url 'search_results' %}">
+									<input type="text" name="q" placeholder="Search" />
+								</form>
+							</section>
+              <section>
+    <ul class="links">
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'profile' user.username%}"><h3>мой профиль</h3></a></li>
+    <li><a href="{% url 'new_post' %}"><h3>Новая запись</h3></a></li>
+    <li><a href="{% url 'all_groups' %}"><h3>все группы</h3></a></li>
+    <li><a href="{% url 'all_authors' %}"><h3>все авторы</h3></a></li>
+    <li><a href="{% url 'author_groups' user.username%}"><h3>мои группы</h3></a></li>
+    <li><a href="{% url 'follow_index' %}"><h3>избранные авторы</h3></a></li>
+    {% else %}
+    <li><a href="{% url 'all_groups' %}"><h3>все группы</h3></a></li>
+    <li><a href="{% url 'all_authors' %}"><h3>все авторы</h3></a></li>
+    </ul>
+    {% endif %}
+							</section>
+
+      <section>{% if user.is_authenticated %}
+								<ul class="actions stacked">
+									<li><a href="{% url 'logout' %}" class="button large fit">Выйти</a></li>
+								</ul>
+                {% else %}
+                <ul class="actions stacked">
+									<li><a href="{% url 'login' %}" class="button large fit">Вoйти</a></li>
+								<li><a href="{% url 'signup' %}" class="button large fit">Зарегистрироваться</a></li>
+                </ul>
+                
+        {% endif %}
+							</section>
+</section>

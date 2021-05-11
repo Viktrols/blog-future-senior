@@ -1,0 +1,63 @@
+{% load static %}
+<div class="card" style="text-align:center;">
+  <div class="card-body">
+  <h2>{{ author.get_full_name}}</h2>
+    {% load thumbnail %} {% thumbnail author.profile.image "960x960" crop="center" upscale=True as im %}
+  <img class="card-img" style="border-radius: 120px;" src="{{ im.url }}" /> {% endthumbnail %}
+  </div>
+  <ul class="list-group list-group-flush">
+  
+        {{ author.profile.bio }}
+      
+    <li class="list-group-item">
+      <div class="h6 text-muted">
+        <a href="{% url 'followers' author.username %}">Подписчиков:<a/> {{ author.following.count }}
+        <br /> <a href="{% url 'following' author.username %}">Подписан:<a/> {{ author.follower.count }}
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="h6 text-muted">
+      {% if post_page%}
+        <a href="{% url 'profile' author.username %}">Записей:</a> {{author.posts.count }}{% else %}Записей: {{author.posts.count }}{% endif %}
+      </div>
+      {% if request.user.id != author.id %}
+      <a href="{% url 'author_groups' author.username %}">Группы автора </a>
+      {% else %}
+      <a href="{% url 'author_groups' author.username %}">Мои группы </a>
+      {% endif %}
+      
+      {% if user.is_authenticated and request.user.id != author.id %}
+      <li class="list-group-item">
+    {% if following %}
+    <a class="button large" 
+      href="{% url 'profile_unfollow' author.username %}" role="button"> 
+            Отписаться 
+    </a> 
+    {% else %}
+    <a class="button large" 
+      href="{% url 'profile_follow' author.username %}" role="button">
+    Подписаться 
+    </a>
+    {% endif %}
+    {% endif %}
+</li> 
+    </li>
+    {% if request.user.id == author.id%}
+    <li class="list-group-item">
+    <a class="button large" 
+      href="{% url 'profile_settings' %}" role="button"> 
+            изменить профиль 
+    </a></li>
+    <li class="list-group-item">
+    <a class="button large" 
+      href="{% url 'password_change' %}" role="button"> 
+            изменить пароль
+    </a></li>
+    <li class="list-group-item">
+    <a class="button large" 
+      href="{% url 'user_delete' author.username %}" role="button" onclick="return confirm('Вы уверены что хотите удалить свой профиль?')"> 
+            удалить профиль 
+    </a></li>
+    {% endif %}
+  </ul>
+</div>

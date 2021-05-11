@@ -1,0 +1,17 @@
+{% extends "includes/base.html" %}
+{% block title %}Страница поста{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="wrapper">
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-3 mb-3" style="margin-top:0;">
+      {% include 'includes/author_card.html' with author=author posts_count=posts_count post_page=True %}
+    </div>
+    <div class="col-md-9">
+      {% include 'includes/post_item.html' with post=post post_page=True %}
+    {% include 'includes/comments.html' with post=post %}
+  </div>
+  </div>
+</main>
+{% endblock %}

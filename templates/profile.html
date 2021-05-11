@@ -1,0 +1,20 @@
+{% extends "includes/base.html" %}
+{% block title %}Страница пользователя{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+{% load user_filters %}
+<div id="wrapper">
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      {% include 'includes/author_card.html' with author=author posts_count=paginator.count %}
+    </div>
+    <div class="col-md-9"> 
+      {% for post in page %}
+      {% include 'includes/post_item.html' with post=post %}
+      {% endfor%}
+      {% include "includes/paginator.html" %}
+    </div>
+  </div></div>
+</main>
+{% endblock %}

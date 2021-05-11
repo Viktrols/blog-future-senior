@@ -1,0 +1,16 @@
+{% extends "includes/base.html" %}
+{% block title %}Записи сообщества {{ group.title }}{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="wrapper">
+  <div id="main">
+  <h3 style="font-size:20px;">{{ group.title }} | <a href="{% url 'all_groups' %}">Все группы </a></h3>
+  <h3 style="font-size:15px;">
+      {{ group.description|linebreaksbr }}
+    </h3>
+    {% for post in page %}
+      {% include "includes/post_item.html" with post=post main_page=True %}
+    {% endfor %}  
+    {% include "includes/paginator.html" %}
+    </div></div>
+{% endblock %} 

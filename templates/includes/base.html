@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static "favicon.ico" %}">
+  <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+  {% include 'includes/nav.html' %}
+  <main>
+    
+      <h1>{% block header %}{% endblock %}</h1> {% block content %} {% endblock %}
+    
+  </main>
+  {% include 'includes/footer.html' %}
+  <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js'%}"></script>
+			<script src="{% static 'assets/js/util.js'%}">></script>
+			<script src="{% static 'assets/js/main.js'%}">></script>
+</body>
+</html>

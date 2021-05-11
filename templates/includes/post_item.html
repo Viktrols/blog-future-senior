@@ -1,0 +1,72 @@
+{% load static %}
+<article class="post">
+<header>
+<div class="title">
+<h2><a href="{% url 'post' post.author.username post.id %}">{{ post.title }}</a></h2>
+</div>
+	<div class="meta">
+		<h5 class="published">{{ post.pub_date }}</h5>
+		<a href="{% url 'profile' post.author.username %}" class="author"><span class="name">{{ post.author.username}}</span>
+		{% if main_page %}{% load thumbnail %} {% thumbnail post.author.profile.image "960x960" crop="center" upscale=True as im %}
+  <img style="border-radius: 100px; width: 4em;" src="{{ im.url }}" /> {% endthumbnail %}{% endif %}</a>
+    </div>
+	</header>
+{% if not post_page %}
+{% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+  <img class="card-img" src="{{ im.url }}" /> {% endthumbnail %}
+<p>
+      {{ post.text|linebreaksbr| capfirst |urlize | truncatewords:100}}
+    </p>
+
+    {% else %}
+    {% if post.image %}
+ <img class="card-img" src="{{ post.image.url }}" /> {% endif %}
+    <p>
+      {{ post.text|linebreaksbr| capfirst |urlize }}
+    </p>
+  {% endif %}
+
+
+    <footer>
+    <ul class="actions">
+		<li style="display: inline-flex;">{% if not post_page%}
+        <a class="button large" href="{% url 'post' post.author.username post.id %}" role="button">
+          Посмотреть
+        </a>{% endif %}</li>
+    <li>{% if user == post.author %}
+        <a class="button large" href="{% url 'post_edit' post.author.username post.id %}" role="button">
+          Редактировать
+        </a>
+        <li>
+        <a class="button large"  style="text-align:center;"  href="{% url 'post_delete' post.author.username post.id %}" role="button" onclick="return confirm('Вы уверены что хотите удалить пост?')">
+          удалить
+        </a>
+        {% endif %}</li>
+		</ul>
+    <ul class="stats">
+<li>
+<a class="icon solid fa-heart" href="{% url 'likes' post.author.username post.id %}" >
+{{ post.likes.count}}</a></li>
+<!-- Возвращение прокрутки на исходное место -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function (event) {
+                            var scrollpos = localStorage.getItem('scrollpos');
+                            if (scrollpos) window.scrollTo(0, scrollpos);
+                        });
+                        window.onbeforeunload = function (e) {
+                            localStorage.setItem('scrollpos', window.scrollY);
+                        };
+                    </script>
+<li><a href="{% url 'post' post.author.username post.id %}" class="icon solid fa-comment">{{ post.comments.count }}</a></li>
+<li>{% if post.group %}
+    <a href="{% url 'group_posts' post.group.slug %}">
+      {{ post.group.title }}
+    </a>
+    {% endif %}</li>
+                  </ul>
+
+
+		</footer>
+
+
+</article>

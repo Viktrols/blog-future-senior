@@ -1,0 +1,44 @@
+{% extends "includes/base.html" %}
+{% load static %}
+{% block title %} Об авторе {% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="wrapper">
+  
+  
+
+<article class="post">
+<header>
+<div class="title">
+<h2>Об авторе</h2>
+</header>
+
+    <p>Привет! Меня зовут Вика, мне 26.
+    <p>Несколько месяцев назад я решила кардинально изменить свою жизнь и получить новую профессию. Кстати, я никогда не работала в сфере IT.
+     На данный момент являюсь студентом Яндекс-Практикума, изучаю разработку на Python. В скором будущем смогу с гордостью заявить, что я - Python Backend Developer (а может и 
+     Full-stack , если изучу JS :))</p>
+     <p>Перед вами мой первый задеплоенный сайт.
+     Не просто так свой проект я назвала <span style="color:#2ebaae;">Future senior</span>, стать сеньором - мечта, а когда она осуществится, сайт будет переименован в <span style="color:#2ebaae;">Just a senior</span>!</p>
+     <p>Буду очень рада, если вы зарегистрируетесь и напишите какой-нибудь пост или оставите комментарий.
+     Функционал пока скромный (нет) и постепенно будет дополняться. О технологиях использованных 
+     в проекте можно прочитать <a href="{% url 'about:tech' %}">здесь</a>.</p>
+
+     <p>Если вы нашли на сайте баг, буду очень благодарна, если напишите мне об этом.
+    </p>
+    
+ 
+<ul class="actions">
+		<li><a href="https://github.com/Viktrols" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+		<li><a href="https://t.me/viktrols" class="icon brands fa-telegram" target="_blank"><span class="label">Telegram</span></a></li>
+		<li><a href="https://www.instagram.com/tegridy.farmer/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+		<li><a href="mailto:viktrols@yandex.ru" class="icon solid fa-envelope" target="_blank"><span class="label">Email</span></a></li>
+	</ul>
+	
+  
+    
+ 
+</article>
+</div>
+{% endblock %}
+
+

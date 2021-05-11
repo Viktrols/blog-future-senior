@@ -1,0 +1,14 @@
+{% extends "includes/base.html" %}
+{% block title %}Результаты поиска{% endblock %}
+{% block content %}
+<div id="wrapper">
+  <div id="main">
+  <h3 style="font-size:20px;">Результаты поиска по запросу: <span style="color: #2ebaae;">{{ query }}</span></h3>
+      {% for post in object_list %}
+      {% include "includes/post_item.html" with post=post main_page=True %}
+      {% empty %}
+      <h3>Ничего не найдено</h3>
+      {% endfor %}
+      
+  </div></div>
+{% endblock %}

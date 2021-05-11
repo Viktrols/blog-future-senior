@@ -1,0 +1,65 @@
+{% load static %}
+<section id="sidebar">
+  <section id="intro">
+    <a class="logo" href={% url 'index' %}><img src="{% static 'logo3.png' %}" alt="Img" /></a>
+    <header>
+    <h2>Future senior</h2>
+    <p>Сайт студента-разработчика</p>
+    </header>
+  </section>
+
+  <section>
+    <ul class="posts"><li>
+        <article>
+          <header>
+            <h3><a href="{% url 'all_groups' %}">Группы</a></h3>
+            <h5 class="published" >Найди интересную группу или создай свою</h6>
+          </header>
+    </article>
+      </li>
+      
+      
+    </ul>
+  </section>
+<section>
+    <ul class="posts"><li>
+        <article>
+          <header>
+            <h3><a href="{% url 'all_authors' %}">Пользователи</a></h3>
+            <h5 class="published" >Все пользователи сайта</h6>
+          </header>
+    </article>
+      </li>
+      
+      
+    </ul>
+  </section>
+  <!-- About -->
+  <section class="blurb">
+    <h2>Об авторе</h2>
+    <p>Небольшая заметка обо мне, создателе этого прекраснейшего сайта.</p>
+    <ul class="actions">
+      <li><a href="{% url 'about:author' %}" class="button">Читать</a></li>
+    </ul>
+  </section>
+  <section class="blurb">
+    <h2><a href="{% url 'about:tech' %}">Технологии</a></h2>
+    <p>Благодаря чему работает сайт?</p>
+    <ul class="actions">
+    <li><a href="{% url 'about:tech' %}" class="button">Читать</a></li>
+    </ul>
+  </section>
+  <section>
+    <section id="footer">
+								<ul class="icons">
+									<li><a href="https://github.com/Viktrols" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+									<li><a href="https://t.me/viktrols" class="icon brands fa-telegram" target="_blank"><span class="label">Telegram</span></a></li>
+									<li><a href="https://www.instagram.com/tegridy.farmer/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+									<li><a href="mailto:viktrols@yandex.ru" class="icon solid fa-envelope" target="_blank"><span class="label">Email</span></a></li>
+								</ul>
+								
+							</section>
+      </li>
+</section>
+
+</div>

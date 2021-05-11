@@ -10,7 +10,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+#dist/
 downloads/
 eggs/
 .eggs/
@@ -127,3 +127,34 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Папки, создаваемые средой разработки
+.idea
+.DS_Store
+.AppleDouble
+.LSOverride
+
+*.sublime-project
+*.sublime-workspace
+
+.vscode/
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+.mypy_cache
+
+# папки со статикой и медиа
+
+
+.git/*
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover 
+
+/static
+/media
+/posts/static

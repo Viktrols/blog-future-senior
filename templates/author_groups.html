@@ -1,0 +1,51 @@
+{% extends "includes/base.html" %} 
+{% block title %} Группы автора {% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+
+<div id="wrapper">
+  <div id="main">
+  <h3 style="font-size:20px;">{% if request.user.id != creator.id%}Все группы <a href="{% url 'profile' creator.username %}">{{ creator.username }}</a>
+  {%else%}Мои группы {% endif %}{% if request.user.id == creator.id%} | <a href="{% url 'new_group' %}">создать новую группу</a>{% endif %}
+   | <a href="{% url 'all_groups' %}">все группы</a></h3>
+
+{% if not groups %}
+{% if request.user.id != creator.id%}
+<h1> У этого автора нет групп </h1>
+<a href="{% url 'profile' creator.username %}"> вернуться на страницу автора </a>
+{% else %}
+<h1> У вас пока нет групп </h1>
+<a href="{% url 'profile' creator.username %}"> вернуться на  свою страницу </a>{% endif %}
+{% else %}
+{% for group in groups%}
+ <article class="post">
+<header>
+<div class="title">
+<h2><a href="{% url 'group_posts' group.slug %}">{{ group.title }}</a></h2>
+    <h5 class="published">{{ group.description|linebreaksbr }}</h5><br>
+    </div>
+	</header>
+    <footer>
+    <ul class="actions">
+		<li>
+        <a class="button large" href="{% url 'group_posts' group.slug %}" role="button">
+          Посмотреть
+        </a></li>
+    <li>{% if user == group.creator %}
+        <a class="button large" href="{% url 'group_edit' group.creator.username group.slug %}" role="button">
+          Редактировать
+        </a> 
+        <li><a class="button large" href="{% url 'group_delete' group.creator.username group.slug %}" role="button" onclick="return confirm('Вы уверены что хотите удалить группу?')">
+        удалить группу
+        </a></li>
+        {% endif %}</li>
+		</ul>
+		</footer>
+  </article>  
+  {% endfor %}
+</div></div>
+
+
+{% endif %}
+  
+{% endblock %}

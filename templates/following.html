@@ -1,0 +1,27 @@
+{% extends "includes/base.html" %} 
+{% block title %} Все группы {% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="wrapper">
+  <div id="main">
+  <h3 style="font-size:20px;">Подписки <a href="{% url 'profile' author.username %}">{{ author.username }}</a> | <a href="{% url 'followers' author.username %}">подписчики</a></h3>
+
+{% for follower in followers %}
+
+<article class="post">
+<div class="title">
+{% load thumbnail %} {% thumbnail follower.author.profile.image "960x960" crop="center" upscale=True as im %}
+  <img style="border-radius: 100px; width: 4em; margin-right:20px;" align="left" 
+  vspace="5" hspace="5" src="{{ im.url }}" /> {% endthumbnail %}
+<h2><a href="{% url 'profile' follower.author.username %}">{{ follower.author.username }}</a></h2>
+<h5 class="published">{{ follower.author.get_full_name |linebreaksbr }}</h5><br>
+    </div>
+
+    
+ 
+</article>
+{% endfor%}
+ </div>
+
+  </div></div>
+{% endblock %}

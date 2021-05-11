@@ -1,0 +1,46 @@
+{% extends "includes/base.html" %} 
+{% block title %} Все группы {% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div id="wrapper">
+  <div id="main">
+  <h3 style="font-size:20px;">Все группы | {% if user.is_authenticated %}<a href="{% url 'author_groups' request.user.username %}">мои группы</a> | {% endif %}
+  <a href="{% url 'new_group' %}">создать новую группу</a></h3>
+
+{% for group in groups%}
+<article class="post">
+<header>
+<div class="title">
+<h2><a href="{% url 'group_posts' group.slug %}">{{ group.title }}</a></h2>
+    <h5 class="published">{{ group.description|linebreaksbr }}</h5>
+    {% if group.creator %}<h6 class='author'> Создатель: <a href="{% url 'profile' group.creator %}" class=""><span class="">{{ group.creator.username}}</a></h6>{% endif %}
+    </div>
+	</header>
+    <footer>
+    <ul class="actions">
+		<li>
+        <a class="button large" href="{% url 'group_posts' group.slug %}" role="button">
+          Посмотреть
+        </a></li>
+    <li>{% if user == group.creator %}
+        <a class="button large" href="{% url 'group_edit' group.creator.username group.slug %}" role="button">
+          Редактировать
+        </a> 
+        <li><a class="button large" href="{% url 'group_delete' group.creator.username group.slug %}" role="button" onclick="return confirm('Вы уверены что хотите удалить группу?')">
+        удалить группу
+        </a></li>
+        {% endif %}</li>
+		</ul>
+    
+    
+		</footer>
+    
+ 
+</article>
+{% endfor%}
+  {% if page.has_other_pages %}
+    {% include "includes/paginator.html" with items=page paginator=paginator%}
+  {% endif %} </div>
+
+  </div></div>
+{% endblock %}

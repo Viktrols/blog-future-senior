@@ -1,0 +1,18 @@
+{% extends "includes/base.html"%} 
+{% block title %} Последледние обновления {% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+
+  <div id="wrapper">
+  <div id="main">
+    {% include "includes/menu.html" with index=True %}
+      <h1 style="padding-top:20px;">Последние обновления на сайте</h1> 
+      {% for post in page %}
+        {% include "includes/post_item.html" with post=post main_page=True %}
+      {% endfor %}
+ 
+  {% if page.has_other_pages %}
+    {% include "includes/paginator.html" with items=page paginator=paginator%}
+  {% endif %} </div>
+  {% include "includes/sidebar.html" %}</div>
+{% endblock %}
