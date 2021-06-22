@@ -108,7 +108,7 @@ class ForAllFormsTests(TestCase):
             'post': self.post.id
         }
         response = self.authorized_client.post(
-            reverse('add_comment'),
+            reverse('add_comment', username=username, post_id=post_id),
             data=form_data
         )
 

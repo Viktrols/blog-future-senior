@@ -206,6 +206,7 @@ def post_delete(request, username, post_id):
         post.delete()
         return redirect('profile',username=request.user.username,)
 
+
 @login_required
 def group_delete(request, username, slug):
     creator = get_object_or_404(User, username=username)
@@ -225,11 +226,13 @@ def user_delete(request, username):
     else:
         user.delete()
         return redirect('index')
-    
+
+
 def author_groups(request, username):
     creator = get_object_or_404(User, username=username)
     groups = Group.objects.filter(creator__username=username)
     return render(request, 'author_groups.html', {'creator': creator , 'groups': groups})
+
 
 @login_required
 def likes(request, username, post_id):

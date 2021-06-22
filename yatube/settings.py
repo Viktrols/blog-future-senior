@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = 'your secret key'
+SECRET_KEY = 'jcl=kk_)rtcxb4x6d_qt631phbsqqjw7(6vjblz9r$r8-bj!d'
 
 
 DEBUG = True
@@ -117,3 +117,4 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
+
