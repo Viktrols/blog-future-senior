@@ -19,7 +19,7 @@
 <li>Django 2.2</li>
 <li>Python 3.8</li>
 <li>SQLite</li>
-<li>Html-шаблоны со стилями можно скачать <a href="https://html5up.net">здесь</a></li>
+<li>HTML/CSS</li>
 <h2>Установка проекта:</h2>
 <ol>
   <li>Клонируйте данный репозиторий git clone https://github.com/Viktrols/blog-yatube-yandex-praktikum.git</li>
