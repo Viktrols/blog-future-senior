@@ -21,23 +21,28 @@
 <li>SQLite</li>
 <li>HTML/CSS</li>
 <h2>Установка проекта:</h2>
-<ol>
-  <li>Клонируйте данный репозиторий git clone https://github.com/Viktrols/blog-yatube-yandex-praktikum.git</li>
-<li>Создайте и активируйте виртуальное окружение:<br>
+
+### Клонируйте данный репозиторий
+```git clone https://github.com/Viktrols/blog-yatube-yandex-praktikum.git```
+### Создайте и активируйте виртуальное окружение
+```
 python -m venv venv<br>
-source ./venv/Scripts/activate  #для Windows<br>
-  source ./venv/bin/activate      #для Linux и macOS</li>
-<li>Установите требуемые зависимости:
+source ./venv/Scripts/activate  #для Windows
+source ./venv/bin/activate      #для Linux и macOS
+```
+### Установите требуемые зависимости
+```
+pip install -r requirements.txt
+```
+### Примените миграции
+```
+python manage.py migrate
+```
+### Запустите django-сервер
+```
+python manage.py runserver
+```
 
-  pip install -r requirements.txt</li>
-<li>Примените миграции:
+### Приложение будет доступно по адресу: http://127.0.0.1:8000/
 
-python manage.py migrate</li>
-
-<li>Запустите django-сервер:
-
-python manage.py runserver</li>
-
-Приложение будет доступно по адресу: http://127.0.0.1:8000/
-</ol>
 
